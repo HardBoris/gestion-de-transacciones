@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Cadastro from "./components/Cadastro";
+import { Inners } from "./components/Inners";
+import { Outers } from "./components/Outers";
+import { Transactions } from "./components/Transactions";
 
 function App() {
+  const [transactions, setTransactions] = useState([
+    { name: "banana", quantity: 100, price: 5 },
+    { name: "morango", quantity: -10, price: 2 },
+    { name: "laranja", quantity: 50, price: 6 },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Cadastro
+        transacciones={transactions}
+        setTransacciones={setTransactions}
+      />
+      <Inners transacciones={transactions} />
+      <Outers transacciones={transactions} />
+      <Transactions transacciones={transactions} />
     </div>
   );
 }
